@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset='utf-8'>
+<title>Detalhe do Filme</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+	integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+	crossorigin="anonymous"></script>
+
+</head>
+<body>
+	<header class="">
+		<h3>
+			<a href="listarFilmes" type="button" class="btn btn-primary">Lista
+				de Filmes</a>
+		</h3>
+	</header>
+
+	<div th:each="filme : ${filme}" class="container detalhesFilme">
+		<h5>Detalhes do Filme</h5>
+		<div>
+			<div>
+				Código: <span th:text="${filme.codigo}"></span>
+			</div>
+			<div>
+				Filme: <span th:text="${filme.filme}"></span>
+			</div>
+			<div>
+				Gênero: <span th:text="${filme.genero}"></span>
+			</div>
+			<div>
+				Locado: <span th:text="${filme.locado}"></span>
+			</div>
+		</div>
+	</div>
+	<!-- 
+	<th:block th:include="mensagemValidacao"></th:block>
+	<div class="container formConvidado">
+		<form method="post" th:object="${convidado}">
+			Nome: <input type="text" value="" name="nomeConvidado"
+				placeholder="Nome Completo" /> Rg: <input type="text" value=""
+				name="rg" placeholder="AA-00.000.000" class="validate" />
+			<button class="waves-effect waves-light btn" type="submit">Adicionar</button>
+		</form>
+	</div>
+
+	<table class="container tabelaConvidado">
+		<thead>
+			<tr>
+				<th>Nome Convidado</th>
+				<th>RG</th>
+				<th>Deletar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="convidado : ${convidados}">
+				<td><span th:text="${convidado.nomeConvidado}"></span></td>
+				<td><span th:text="${convidado.rg}"></span></td>
+				<td><a class="waves-effect waves-light btn-small"
+					th:href="${(#mvc.url('EC#deletarConvidado').arg(0, convidado.rg)).build()}"><i
+						class="material-icons left">delete</i></a></td>
+			</tr>
+		</tbody>
+	</table>
+	-->
+</body>
+</html>
