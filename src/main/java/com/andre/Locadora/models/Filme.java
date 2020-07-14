@@ -16,6 +16,7 @@ public class Filme implements Serializable{
 
 	@Id
 	@Column(name = "codigo", nullable = false, unique = true, length = 60)
+	
 	private long codigo;
 	
 	@Column(name = "filme", nullable = false, unique = true, length = 60)

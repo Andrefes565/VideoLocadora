@@ -21,43 +21,54 @@
 			<h1>Lista de Filmes</h1>
 		</div>
 	</header>
+
 	<div class="row ">
-	<h3 class="col-md-3">
-		<a href="cadastrarFilme" type="button"class="btn btn-primary">CadastrarFilmes</a>
-	</h3>
-	<div th:replace="fragments/alert"></div>
-	<table class="container table col-md-9">
-		<thead class="thead-dark">
-			<tr>
-				<th>#</th>
-				<th>Filmes</th>
-				<th>Ação</th>
-				<th>Locar</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="filme:${filmes}">
-				<td><span th:text="${filme.codigo}"></span></td>
+		<div class="col-md-3">
+			<h3>
+				<a href="cadastrarFilme" type="button" class="btn btn-primary">CadastrarFilmes</a>
+			</h3>
+			<div>
+				<form th:action="@{/consultarFilme}">
+					<div class="form-group">
+						<label  for="nomeFilme"></label> <input type="search"
+							class="form-control" value="" th:name="nomeFilme" placeholder="Ex: 'Annabelle'">
+					</div>
+					<button  class="btn btn-primary">Consultar</button>
+				</form>
 
-				<td> 
-					<a th:href="${(#mvc.url('FC#detalhesFilme').arg(0, filme.codigo)).build()}"><span
-					th:text="${filme.filme}"> </span></a> 
-				</td>
+			</div>
 
-				<td>
-					<a th:href="${(#mvc.url('FC#editarFilme').arg(0, filme.codigo)).build()}" type="button" class="btn btn-primary">Editar</a>
-					<a th:href="${(#mvc.url('FC#deletarFilme').arg(0, filme.codigo)).build()}"
-						type="button" class="btn btn-primary">Excluir
-					</a>
-				</td>
-				<td>
-					<a th:href="${(#mvc.url('FC#locacaoFilme').arg(0, filme.codigo)).build()}" type="button" class="btn btn-primary">Locar</a>
-					
-				</td>
-			</tr>
+		</div>
+		<div th:replace="fragments/alert"></div>
+		<table class="container table col-md-9">
+			<thead class="thead-dark">
+				<tr>
+					<th>#</th>
+					<th>Filmes</th>
+					<th>Ação</th>
+					<th>Locar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="filme:${filmes}">
+					<td><span th:text="${filme.codigo}"></span></td>
 
-		</tbody>
-	</table>
+					<td><a
+						th:href="${(#mvc.url('FC#detalhesFilme').arg(0, filme.codigo)).build()}"><span
+							th:text="${filme.filme}"> </span></a></td>
+
+					<td><a
+						th:href="${(#mvc.url('FC#editarFilme').arg(0, filme.codigo)).build()}"
+						type="button" class="btn btn-primary">Editar</a> <a
+						th:href="${(#mvc.url('FC#deletarFilme').arg(0, filme.codigo)).build()}"
+						type="button" class="btn btn-primary">Excluir </a></td>
+					<td><a
+						th:href="${(#mvc.url('FC#locacaoFilme').arg(0, filme.codigo)).build()}"
+						type="button" class="btn btn-primary">Locar</a></td>
+				</tr>
+
+			</tbody>
+		</table>
 	</div>
 </body>
 </html>
