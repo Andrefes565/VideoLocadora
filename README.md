@@ -1,5 +1,5 @@
 # VideoLocadora
-## No projeto foram utilizadas as seguintes tecnologias: Java 11, SpringMvc, Hibernate, Html, Bootstrap e MySql
+## No projeto foram utilizadas as seguintes tecnologias: Java 11, SpringMvc, Hibernate, Html, Bootstrap e MySql(MySql Workbench)
 
 # Lista de Filmes
 ### Onde Fica a maioria das funções do Sistema
