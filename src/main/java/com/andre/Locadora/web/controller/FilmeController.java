@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,7 +59,6 @@ public class FilmeController {
 		attr.addFlashAttribute("success", "Filme Excluído com sucesso!");
 		return "redirect:/listarFilmes";
 	}
-
 	@RequestMapping("/editarFilme")
 	public ModelAndView editarFilme(long codigo) {
 		Filme filme = fr.findByCodigo(codigo);
@@ -97,6 +95,17 @@ public class FilmeController {
 		this.fr.save(filme);
 		return "redirect:/listarFilmes";
 	}
+	
+	@RequestMapping("/DarBaixaFilme")
+	public String DarBaixaFilme(long codigo, RedirectAttributes attr) {
+		attr.addFlashAttribute("success", "Devolução feita com sucesso!");
+		Filme filme = fr.findByCodigo(codigo);
+		filme.setLocado(false);
+		this.fr.save(filme);
+		return "redirect:/listarFilmes";
+	}
+	
+	
 	@RequestMapping("/consultarFilme")
 	public ModelAndView consultarFilme(@RequestParam("nomeFilme") String nomeFilme) {
 		Filme filme = fr.findByFilme(nomeFilme);
@@ -104,19 +113,17 @@ public class FilmeController {
 		mv.addObject("filmes", filme);
 		return mv;
 	}
-	
-	
+	/*
 	@RequestMapping("/login")
 	public String login(@RequestParam("email") String email, @RequestParam("senha") Long senha,  RedirectAttributes attr) {
 		
 		if ((email.equals("andre@gmail.com") && (senha == 1234))) {
 			
 			return "redirect:/listarFilmes";
-			
 		}
 		attr.addFlashAttribute("fail", "Email ou senha errados");
 		return "redirect:/";
 	}
-	
+	*/
 
 }

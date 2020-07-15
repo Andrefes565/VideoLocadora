@@ -17,36 +17,38 @@
 <body>
 
 	<header>
-		<div class="layout">
+		<div align="center" style="margin-bottom: 40px">
 			<h1>Lista de Filmes</h1>
 		</div>
 	</header>
 
 	<div class="row ">
 		<div class="col-md-3">
-			<h3>
+			<h3 style="margin-bottom: 40px">
 				<a href="cadastrarFilme" type="button" class="btn btn-primary">CadastrarFilmes</a>
 			</h3>
 			<div>
 				<form th:action="@{/consultarFilme}">
 					<div class="form-group">
-						<label  for="nomeFilme"></label> <input type="search"
-							class="form-control" value="" th:name="nomeFilme" placeholder="Ex: 'Annabelle'">
+						<label for="nomeFilme"></label> <input type="search"
+							class="form-control" value="" th:name="nomeFilme"
+							placeholder="Ex: 'Annabelle'">
 					</div>
-					<button  class="btn btn-primary">Consultar</button>
+					<button class="btn btn-primary">Consultar</button>
 				</form>
 
 			</div>
 
 		</div>
-		<div th:replace="fragments/alert"></div>
 		<table class="container table col-md-9">
 			<thead class="thead-dark">
 				<tr>
 					<th>#</th>
 					<th>Filmes</th>
+					<th>Detalhe</th>
 					<th>Ação</th>
 					<th>Locar</th>
+					<th>Dar Baixa</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -57,6 +59,10 @@
 						th:href="${(#mvc.url('FC#detalhesFilme').arg(0, filme.codigo)).build()}"><span
 							th:text="${filme.filme}"> </span></a></td>
 
+					<td><a class="btn btn-primary"
+						th:href="${(#mvc.url('FC#detalhesFilme').arg(0, filme.codigo)).build()}">
+							Detalhe</a></td>
+
 					<td><a
 						th:href="${(#mvc.url('FC#editarFilme').arg(0, filme.codigo)).build()}"
 						type="button" class="btn btn-primary">Editar</a> <a
@@ -65,10 +71,17 @@
 					<td><a
 						th:href="${(#mvc.url('FC#locacaoFilme').arg(0, filme.codigo)).build()}"
 						type="button" class="btn btn-primary">Locar</a></td>
+
+					<td><a
+						th:href="${(#mvc.url('FC#DarBaixaFilme').arg(0, filme.codigo)).build()}"
+						type="button" class="btn btn-primary">Dar Baixa</a></td>
 				</tr>
 
 			</tbody>
 		</table>
+
 	</div>
+
+	<div th:replace="fragments/alert"></div>
 </body>
 </html>
